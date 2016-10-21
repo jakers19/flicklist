@@ -28,9 +28,13 @@
     <header>
       <h2>Browse Movies</h2>
       <!-- 
-      TODO 6
+      TODO 6 - completed
       add a <form> here for users to search for movies by title 
       -->
+        <form id="form-search">
+            <input type="text" name="query"/>
+            <input type="submit" value="Search by Title"/>
+        </form>
 
     </header>
 
@@ -42,18 +46,20 @@
   <script>
     // TODO 8
     // fill in the missing pieces of the code below
+    $(document).ready(function() {
+        $("#form-search").submit(function(evt) {
 
-    $("TODO 8a").submit(function(evt) {
+            // first, we cancel the default action (which would leave the page)
+            evt.preventDefault();
 
-      // first, we cancel the default action (which would leave the page)
-      evt.preventDefault();
-
-      // figure out what the user typed
-      var searchTerm = $("TODO 8b").val();
+            // figure out what the user typed
+            var query = $("#form-search input[name=query]").val();
+            searchMovies(query, render);
+        });
 
       // TODO 8c invoke the searchMovies function,
       // passing in the search term, and render as the callback
-
+      discoverMovies(render); 
     });
   </script>
 
